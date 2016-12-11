@@ -9,9 +9,7 @@ connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.branch_table + '` ( \
     `b_id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
     `branchname` VARCHAR(50) NOT NULL, \
-    `address` VARCHAR(50) NOT NULL, \
     `city` VARCHAR(50) NOT NULL, \
-    `p_code` VARCHAR(50) NOT NULL, \
     `contact_no` VARCHAR(50) NOT NULL, \
     PRIMARY KEY (`b_id`), \
     UNIQUE INDEX `id_UNIQUE` (`b_id` ASC) \
@@ -23,12 +21,10 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.customer_table + '` ( \
     `c_id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
     `first_name` VARCHAR(50) NOT NULL, \
     `last_name` VARCHAR(50) NOT NULL, \
-    `address` VARCHAR(50) NOT NULL, \
     `city` VARCHAR(50) NOT NULL, \
-    `p_code` VARCHAR(50) NOT NULL, \
-    `email` VARCHAR(50) NOT NULL, \
+    `email` VARCHAR(50) NOT NULL UNIQUE, \
+		`password` CHAR(60) NOT NULL, \
     `contact_no` VARCHAR(50) NOT NULL, \
-    `age` INT,\
 	  `b_id` INT UNSIGNED NOT NULL,\
     PRIMARY KEY (`c_id`), \
     UNIQUE INDEX `id_UNIQUE` (`c_id` ASC), \
