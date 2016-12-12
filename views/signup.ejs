@@ -22,33 +22,52 @@
 	<% } %>
 
 	<!-- LOGIN FORM -->
+	<div class="well">
 	<form action="/signup" method="post">
-		<div class="form-group">
+		<div class="form-group-sm ">
 			<label>First Name</label>
-			<input type="text" class="form-control" name="fname">
+			<input type="text" class="form-control input-sm" name="fname" required>
 		</div>
-		<div class="form-group">
+		<div class="form-group-sm">
 			<label>Last Name</label>
-			<input type="text" class="form-control" name="lname">
+			<input type="text" class="form-control input-sm" name="lname" required>
 		</div>
-		<div class="form-group">
+		<div class="form-group-sm">
 			<label>City</label>
-			<input type="text" class="form-control" name="city">
+			<input type="text" class="form-control input-sm" name="city" required>
 		</div>
-		<div class="form-group">
+		<div class="form-group-sm">
 			<label>Phone Number</label>
-			<input type="text" class="form-control" name="contact">
+			<input type="tel" pattern="^\d{3}-\d{3}-\d{4}$" class="form-control input-sm" name="contact" placeholder="xxx-xxx-xxxx"required>
 		</div>
-		<div class="form-group">
+		<div class="form-group-sm">
+      <label for="sel1">Select an Account Type </label>
+      <select class="form-control input-sm" name="actype">
+        <option>Savings</option>
+        <option>Checking</option>
+      </select>
+		</div>
+		<div class="form-group-sm">
 			<label>Email</label>
-			<input type="email" class="form-control" name="email">
+			<input type="email" class="form-control input-sm" name="email" required>
 		</div>
-		<div class="form-group">
+		<div class="form-group-sm">
 			<label>Password</label>
-			<input type="password" class="form-control" name="password">
+			<input class="form-control input-sm" title="Password must contain at least 6 characters, including UPPER/lowercase and numbers" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="password" onchange="
+  this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+  if(this.checkValidity()) form.pwd2.pattern = this.value;
+">
+		</div>	
+		<div class="form-group-sm">
+			<label>Confirm Password</label>
+			<input class="form-control input-sm" title="Please enter the same Password as above" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd2" onchange="
+  this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+">
 		</div>
+		
 		<button type="submit" class="btn btn-warning btn-lg">Signup</button>
 	</form>
+	</div>
 
 	<hr>
 

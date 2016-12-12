@@ -1,4 +1,7 @@
+ // server.js
 
+// set up ======================================================================
+// get all the tools we need
 var express  = require('express');
 var session  = require('client-sessions');
 var cookieParser = require('cookie-parser');
@@ -9,12 +12,6 @@ var port = process.env.PORT || 3000;
 var bcrypt = require('bcrypt-nodejs');
 var flash    = require('connect-flash');
 var mysqlModel = require('mysql-model');
-var path = require('path');
-var serveStatic = require('serve-static')
-
-
-console.log(path.join(__dirname, '/public'));
-app.use('/img', express.static(path.join(__dirname, '/public/images')));
 
 app.use(session({
 	cookieName: 'session',
@@ -23,12 +20,11 @@ app.use(session({
 	activeDuration: 5*60*1000
  } )); 
 
-var dbconfig = require('./config/database');
 var MyAppModel = mysqlModel.createConnection({
-  host     : dbconfig.connection.hostname,
-  user     : dbconfig.connection.user,
-  password : dbconfig.connection.password,
-  database : dbconfig.database,
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'my_bank',
 });
 
 
@@ -45,8 +41,6 @@ var Account = MyAppModel.extend({
     tableName: "account",
 });
 
-
-
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -57,7 +51,7 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 
-//Authentication middleware
+// Authentication middleware
 app.use(function(req,res,next){
 	if(req.session && req.session.customer){
 		cur_customer = new Customer();
@@ -91,51 +85,16 @@ function requireLogin(req,res,next){
 	 }
 }
 
-
-//Define Routes
+//Define Routes 
 app.get('/',function(req,res){
   res.render('index.ejs');
-	console.log(typeof res.locals.customer);
 });
 
-//Signup get
-app.get('/signup',function(req,res){
-  message = '';
-  res.render('signup.ejs',{message:message});
-});
-
-
-//Signup Post
-app.post('/signup',function(req,res){
-  customer = new Customer({
-    first_name: req.body.fname,
-    last_name: req.body.lname,
-    city: req.body.city,
-    email: req.body.email,
-		password: bcrypt.hashSync(req.body.password,null,null),
-		contact_no:req.body.contact,
-		b_id:1
-	});
-	customer.save(function(err,ok){
-			if(err){
-				res.render('login.ejs',{message:err.code});
-			}
-			else{
-				req.session.customer=customer;
-				res.redirect('/account'); 
-			}
-	});	
-	
-});
-
-
-//Login get
 app.get('/login',function(req,res){
 	message = '';
   res.render('login.ejs',{message:message});
 });
 
-//Login post 
 app.post('/login',function(req,res){
 	customer = new Customer();
 	customer.find('first', {where: "email = '"+req.body.email+"' " }, function(err, rows) {
@@ -153,27 +112,61 @@ app.post('/login',function(req,res){
 	});
 });
 
+app.get('/signup',function(req,res){
+  message = '';
+  res.render('signup.ejs',{message:message});
+});
 
+app.post('/signup',function(req,res){
+  customer = new Customer({
+    first_name: req.body.fname,
+    last_name: req.body.lname,
+    city: req.body.city,
+    email: req.body.email,
+		password: bcrypt.hashSync(req.body.password,null,null),
+		contact_no:req.body.contact,
+		b_id:1
+	});
+	customer.save(function(err,ok){
+			if(err){
+				res.render('signup.ejs',{message:err.code});
+			}
+			else{
+				req.session.customer=customer;
+				req.session.actype=req.body.actype;
+				res.redirect('/account'); 
+			}
+	});	
+	
+});
 
-//Account get
 app.get('/account',requireLogin,function(req,res){
   account = new Account();
 	account.find('first', {where: "c_id = "+req.session.customer.c_id }, function(err, rows) {
 		if(!rows){
-			console.log("NOthing found");
+			new_account = new Account({
+				account_number:Math.floor(Math.random()*10000000),
+				acc_type :req.session.actype,
+				balance: 0,
+				c_id: req.session.customer.c_id
+			});
+			
+			new_account.save(function(er,ok){
+				if(er){
+					console.log(er);
+				}else{
+					res.redirect('/account');
+				}
+			});
 		}
 		else{
 			console.log(rows);
 			res.locals.account = rows;
-			console.log(res.locals.account);
 			res.render('account.ejs');
 		}
 	});
-	
 });
 
-
-//Transactions get
 app.get('/transaction',requireLogin,function(req,res){
 	 transaction = new Transaction();
 		account = new Account();
@@ -190,20 +183,19 @@ app.get('/transaction',requireLogin,function(req,res){
 					res.render('transaction.ejs');
 				}
 			});
+
+			console.log(res.locals.account);
 			
 		}
 	});
+ 
 });
 
-
-//Logout get
 app.get('/logout',function(req,res){
   req.session.reset();
-	res.locals.customer=null;
-	console.log(res.locals.customer);
   res.redirect('/');
 });
 
 
 app.listen(port);
-console.log('Your server is running at' + port);
+console.log('The magic happens on port ' + port);
