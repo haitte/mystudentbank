@@ -1,7 +1,4 @@
- // server.js
 
-// set up ======================================================================
-// get all the tools we need
 var express  = require('express');
 var session  = require('client-sessions');
 var cookieParser = require('cookie-parser');
@@ -13,10 +10,11 @@ var bcrypt = require('bcrypt-nodejs');
 var flash    = require('connect-flash');
 var mysqlModel = require('mysql-model');
 var path = require('path');
+var serveStatic = require('serve-static')
 
 
 console.log(path.join(__dirname, '/public'));
-app.use('/static', express.static(path.join(__dirname, '/public')));
+app.use('/img', express.static(path.join(__dirname, '/public/images')));
 
 app.use(session({
 	cookieName: 'session',
@@ -92,6 +90,7 @@ function requireLogin(req,res,next){
 		 next();
 	 }
 }
+
 
 //Define Routes
 app.get('/',function(req,res){
@@ -189,10 +188,8 @@ app.get('/transaction',requireLogin,function(req,res){
 				}else{
 					res.locals.transactions=rows;	
 					res.render('transaction.ejs');
-					console.log(res.locals.transactions[0].t_id);
 				}
 			});
-			console.log(res.locals.account);
 			
 		}
 	});
