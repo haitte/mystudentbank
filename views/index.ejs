@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Node Authentication</title>
+	<title>Welcome to the Bank</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!-- load fontawesome -->
 	<style>
@@ -12,36 +12,40 @@
 		}
 		.jumbotron {
    background: rgb(200, 54, 54); /* This is for ie8 and below */
-   background: rgba(0, 0, 0, 0.2); 
+   background: rgba(0, 0, 0, 0.4); 
 		}
 		video#bgvid { 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background: url(polina.jpg) no-repeat;
-    background-size: cover; 
-}
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			min-width: 100%;
+			min-height: 100%;
+			width: auto;
+			height: auto;
+			z-index: -100;
+			-ms-transform: translateX(-50%) translateY(-50%);
+			-moz-transform: translateX(-50%) translateY(-50%);
+			-webkit-transform: translateX(-50%) translateY(-50%);
+			transform: translateX(-50%) translateY(-50%);
+			background: url(polina.jpg) no-repeat;
+			background-size: cover; 	
+		}
+		#heading{
+			color: #fff;
+		}
+		
 	</style>
 </head>
 <body>
 	<video playsinline autoplay muted loop poster="polina.jpg" id="bgvid">
-    <source src="https://rawgit.com/haitte/mystudentbank/master/public/videos/343639076.mp4" type="video/mp4">
+    <source src="https://rawgit.com/haitte/mystudentbank/master/public/videos/618513234.mp4" type="video/mp4">
 	</video>
     <div class="container">
         <div class="jumbotron text-center">
-					<h1><span class="fa fa-university"></span>Awesome Irish Bank</h1>
+					<h1 id="heading"><span class="fa fa-university"></span>Irish Student Bank</h1>
 					<%if (!locals.customer) { %>
 						<a href="/login" class="btn btn-success"><span class="fa fa-sign-in"></span> Login</a>
-            <a href="/signup" class="btn btn-success"><span class="fa fa-user"></span>Signup to use Internet Banking</a>
+            <a href="/signup" class="btn btn-success"><span class="fa fa-use r"></span>Signup to use Internet Banking</a>
 					<% } %>
 					<%if (locals.customer) { %>
 						<a href="/account" class="btn btn-success"><span class="fa fa-bank"></span> View Your Account</a>
