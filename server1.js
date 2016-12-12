@@ -12,6 +12,11 @@ var port = process.env.PORT || 3000;
 var bcrypt = require('bcrypt-nodejs');
 var flash    = require('connect-flash');
 var mysqlModel = require('mysql-model');
+var path = require('path');
+
+
+console.log(path.join(__dirname, '/public'));
+app.use('/static', express.static(path.join(__dirname, '/public')));
 
 app.use(session({
 	cookieName: 'session',
@@ -20,11 +25,12 @@ app.use(session({
 	activeDuration: 5*60*1000
  } )); 
 
+var dbconfig = require('./config/database');
 var MyAppModel = mysqlModel.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'my_bank',
+  host     : dbconfig.connection.hostname,
+  user     : dbconfig.connection.user,
+  password : dbconfig.connection.password,
+  database : dbconfig.database,
 });
 
 
@@ -41,6 +47,8 @@ var Account = MyAppModel.extend({
     tableName: "account",
 });
 
+
+
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -51,7 +59,7 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 
-// Authentication middleware
+//Authentication middleware
 app.use(function(req,res,next){
 	if(req.session && req.session.customer){
 		cur_customer = new Customer();
@@ -85,38 +93,20 @@ function requireLogin(req,res,next){
 	 }
 }
 
-//Define Routes 
+//Define Routes
 app.get('/',function(req,res){
   res.render('index.ejs');
+	console.log(typeof res.locals.customer);
 });
 
-app.get('/login',function(req,res){
-	message = '';
-  res.render('login.ejs',{message:message});
-});
-
-app.post('/login',function(req,res){
-	customer = new Customer();
-	customer.find('first', {where: "email = '"+req.body.email+"' " }, function(err, rows) {
-  	if(!rows){
-			res.render('login.ejs',{message:'Email not registered!'});
-		}else{
-			console.log(rows.password);
-			if(bcrypt.compareSync(req.body.password, rows.password)){
-				req.session.customer = rows;
-				res.redirect('/account');
-			}else{
-				res.render('login.ejs',{message:'Wrong username or Password!!'});
-			}
-		}
-	});
-});
-
+//Signup get
 app.get('/signup',function(req,res){
   message = '';
   res.render('signup.ejs',{message:message});
 });
 
+
+//Signup Post
 app.post('/signup',function(req,res){
   customer = new Customer({
     first_name: req.body.fname,
@@ -139,6 +129,34 @@ app.post('/signup',function(req,res){
 	
 });
 
+
+//Login get
+app.get('/login',function(req,res){
+	message = '';
+  res.render('login.ejs',{message:message});
+});
+
+//Login post 
+app.post('/login',function(req,res){
+	customer = new Customer();
+	customer.find('first', {where: "email = '"+req.body.email+"' " }, function(err, rows) {
+  	if(!rows){
+			res.render('login.ejs',{message:'Email not registered!'});
+		}else{
+			console.log(rows.password);
+			if(bcrypt.compareSync(req.body.password, rows.password)){
+				req.session.customer = rows;
+				res.redirect('/account');
+			}else{
+				res.render('login.ejs',{message:'Wrong username or Password!!'});
+			}
+		}
+	});
+});
+
+
+
+//Account get
 app.get('/account',requireLogin,function(req,res){
   account = new Account();
 	account.find('first', {where: "c_id = "+req.session.customer.c_id }, function(err, rows) {
@@ -155,15 +173,40 @@ app.get('/account',requireLogin,function(req,res){
 	
 });
 
-// app.get('/transaction',requireLogin,function(req,res){
-//   res.render('transaction.ejs',{message:message});
-// });
 
+//Transactions get
+app.get('/transaction',requireLogin,function(req,res){
+	 transaction = new Transaction();
+		account = new Account();
+		account.find('first', {where: "c_id = "+req.session.customer.c_id }, function(err, row) {
+		if(!row){
+			console.log("Nothing found");
+		}
+		else{
+			transaction.find('all',{where : "a_id = "+row.a_id},function(errs,rows){
+				if(!rows){
+					res.locals.transactions='';
+				}else{
+					res.locals.transactions=rows;	
+					res.render('transaction.ejs');
+					console.log(res.locals.transactions[0].t_id);
+				}
+			});
+			console.log(res.locals.account);
+			
+		}
+	});
+});
+
+
+//Logout get
 app.get('/logout',function(req,res){
   req.session.reset();
+	res.locals.customer=null;
+	console.log(res.locals.customer);
   res.redirect('/');
 });
 
 
 app.listen(port);
-console.log('The magic happens on port ' + port);
+console.log('Your server is running at' + port);

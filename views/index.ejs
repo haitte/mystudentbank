@@ -3,7 +3,7 @@
 <head>
 	<title>Node Authentication</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!-- load fontawesome -->
 	<style>
 		body 		{ padding-top:80px; }
 	</style>
@@ -11,12 +11,15 @@
 <body>
     <div class="container">
         <div class="jumbotron text-center">
-            <h1><span class="fa fa-lock"></span> Node Authentication</h1>
-
-            <p>Login or Register with:</p>
-
-            <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-            <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+					<h1><span class="fa fa-university"></span>Awesome Irish Bank</h1>
+					<%if (!locals.customer) { %>
+						<a href="/login" class="btn btn-success"><span class="fa fa-sign-in"></span> Login</a>
+            <a href="/signup" class="btn btn-success"><span class="fa fa-user"></span>Signup to use Internet Banking</a>
+					<% } %>
+					<%if (locals.customer) { %>
+						<a href="/account" class="btn btn-success"><span class="fa fa-bank"></span> View Your Account</a>
+            <a href="/logout" class="btn btn-danger"><span class="fa  fa-sign-out"></span>Logout</a>
+					<% } %>
         </div>
     </div>
 </body>

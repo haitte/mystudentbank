@@ -4,7 +4,7 @@
 <head>
 	<title>Node Authentication</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
 		body 		{ padding-top:80px; word-wrap:break-word; }
 	</style>
@@ -13,27 +13,35 @@
 <div class="container">
 
 	<div class="page-header text-center">
-		<h1><span class="fa fa-anchor"></span> Profile Page</h1>
-		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+		<h1>Your Accounts</h1>
+		<a href="/transaction" class="btn btn-info btn-sm">View your transactions</a>
+		<a href="/" class="btn btn-info btn-sm">Go Home</a>
+		<a href="/logout" class="btn btn-danger btn-sm">Logout</a>
 	</div>
 
 	<div class="row">
 
 		<!-- LOCAL INFORMATION -->
-		<div class="col-sm-6">
+		<div class="col-sm-12">
 			<div class="well">
-				<h3><span class="fa fa-user"></span> Local</h3>
+				<h2 class="text-center"><span class="fa fa-user"></span>Your Details</h2>
 
-					<p>
+					<p class="text-center">
 						<strong>Welcome, </strong> <%= customer.first_name %><br>
 						<strong>Last Name</strong>: <%= customer.last_name %><br>	
 						<strong>City</strong>: <%= customer.city %>
 					</p>
-				
-					<p>
+
+			</div>
+		</div>
+	<div class="col-sm-12">
+			<div class="well">
+				<h3 class="text-center"><span class="fa fa-book"></span>Your Account Details</h3>
+
+					<p class="text-center">
 						<strong>Account Number</strong> <%= account.account_number %><br>
 						<strong>Account Type</strong>: <%= account.acc_type %><br>
-						<strong>Balance</strong>: <h1><%= account.balance %></h1>
+						<h1 class="text-center">Balance : €<%= account.balance %></h1>
 					</p>
 
 			</div>

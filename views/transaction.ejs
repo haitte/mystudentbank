@@ -1,0 +1,56 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+
+<head>
+	<title>Node Authentication</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		body {
+			padding-top: 80px;
+			word-wrap: break-word;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="page-header text-center">
+			<h1><span class="fa fa-shopping-basket"></span> Your Transactions so far</h1>
+			<a href="/account" class="btn btn-info btn-sm">Go to your Account</a>
+			<a href="/" class="btn btn-info btn-sm">Go Home</a>
+			<a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+		</div>
+
+
+		<div class="container">
+ 	 	<h2 id="heading">Account Transactions</h2>         
+  	<table class="table table-bordered table-hover">
+			 <thead>
+      <tr>
+        <th>Transaction Type</th>
+        <th>Transaction Amount</th>
+        <th>Transaction Date</th>
+      </tr>
+    </thead>
+    <tbody>
+		<% for( var i in transactions ){ %>
+			<tr>
+				<td><%= transactions[i].type%></td>
+				<td>€<%= transactions[i].amount %></td>
+				<td><%= transactions[i].time_stamp %></td>
+			</tr>	
+			<% } %>
+			</tbody>
+			</table>
+		</div>
+		
+
+
+
+	</div
+</body>
+
+</html>
