@@ -28,7 +28,7 @@ var MyAppModel = mysqlModel.createConnection({
 });
 
 
-//Setup our model
+//Setup our model based on tables from our DB
 var Customer = MyAppModel.extend({
     tableName: "customer",
 });
@@ -50,17 +50,43 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.set('view engine', 'ejs'); // set up ejs for templating
 
+
+// Authentication middleware
 app.use(function(req,res,next){
 	if(req.session && req.session.customer){
-		cur_customer = new Customer()
-		cur_customer.find('first', {where: "email = '"+req.body.email+"' " }, function(err, rows) {
-			
+		cur_customer = new Customer();
+		//console.log(req.session.customer.email);
+		cur_customer.find('first', {where: "email = '"+req.session.customer.email+"' " }, function(err, rows) {
+			if(!rows){
+				//console.log("heere in !rows");
+				next();  
+			}else{
+				//console.log("heere in rows");
+				req.customer = rows;
+				delete req.user.password;
+				req.session.customer = req.user; 
+				res.locals.customer = req.user;
+			}
+			next();
 		});
+	}else{
+		//console.log("heere in final next");
+		next();
 	}
 });
 
+//requireLogin middleware
+function requireLogin(req,res,next){
+	 if(!req.customer){
+		 console.log("heere in require login");
+		 res.redirect('login');
+	 }else{
+		 next();
+	 }
+}
 
-//Define Routes
+
+//Define Routes 
 app.get('/',function(req,res){
   res.render('index.ejs');
 });
@@ -78,7 +104,7 @@ app.post('/login',function(req,res){
 		}else{
 			console.log(rows.password);
 			if(bcrypt.compareSync(req.body.password, rows.password)){
-				req.session.customer = rows.email;
+				req.session.customer = rows;
 				res.redirect('/account');
 			}else{
 				res.render('login.ejs',{message:'Wrong username or Password!!'});
@@ -107,37 +133,19 @@ app.post('/signup',function(req,res){
 				res.render('login.ejs',{message:err.code});
 			}
 			else{
-				res.redirect('account.ejs');
+				res.redirect('account.ejs'); 
 			}
 	});	
 	
 });
 
-app.get('/account',function(req,res){
-  message ='';
-	if(req.session && req.session.customer){
-		console.log("In Account");
-		cur_customer  = new Customer();
-		cur_customer.find('first', {where: "email = '"+req.session.customer+"' " }, function(err, rows){
-			if(!rows){
-				console.log("No customer found for"+req.session.customer.email);
-				req.session.reset();
-				res.redirect('/login');
-			}else{
-				res.locals.customer = rows;
-				res.render('account.ejs');
-			}
-		});
-	}else{
-		res.redirect('/login');
-	}
- 
+app.get('/account',requireLogin,function(req,res){
+  res.render('account.ejs');
 });
 
-app.get('/transaction',function(req,res){
-  message ='';
-  res.render('transaction.ejs',{message:message});
-});
+// app.get('/transaction',requireLogin,function(req,res){
+//   res.render('transaction.ejs',{message:message});
+// });
 
 app.get('/logout',function(req,res){
   req.session.reset();
