@@ -63,9 +63,9 @@ app.use(function(req,res,next){
 			}else{
 				//console.log("heere in rows");
 				req.customer = rows;
-				delete req.user.password;
-				req.session.customer = req.user; 
-				res.locals.customer = req.user;
+				delete req.customer.password;
+				req.session.customer = req.customer ; 
+				res.locals.customer = req.customer ;
 			}
 			next();
 		});
@@ -84,7 +84,6 @@ function requireLogin(req,res,next){
 		 next();
 	 }
 }
-
 
 //Define Routes 
 app.get('/',function(req,res){
@@ -133,14 +132,27 @@ app.post('/signup',function(req,res){
 				res.render('login.ejs',{message:err.code});
 			}
 			else{
-				res.redirect('account.ejs'); 
+				req.session.customer=customer;
+				res.redirect('/account'); 
 			}
 	});	
 	
 });
 
 app.get('/account',requireLogin,function(req,res){
-  res.render('account.ejs');
+  account = new Account();
+	account.find('first', {where: "c_id = "+req.session.customer.c_id }, function(err, rows) {
+		if(!rows){
+			console.log("NOthing found");
+		}
+		else{
+			console.log(rows);
+			res.locals.account = rows;
+			console.log(res.locals.account);
+			res.render('account.ejs');
+		}
+	});
+	
 });
 
 // app.get('/transaction',requireLogin,function(req,res){
