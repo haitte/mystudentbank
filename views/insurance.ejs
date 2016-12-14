@@ -54,7 +54,7 @@
 			-moz-transform: translateX(-50%) translateY(-50%);
 			-webkit-transform: translateX(-50%) translateY(-50%);
 			transform: translateX(-50%) translateY(-50%);
-/* 			background: url(polina.jpg) no-repeat; */
+			background: url(polina.jpg) no-repeat;
 			background-size: cover; 	
 		}
 		#heading{
@@ -88,10 +88,49 @@
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 </style>
+  <style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+<script>
+	function loadDoc() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				myFunction(this);
+			}
+		};
+		xhttp.open("GET", "/option.xml", true);
+		xhttp.send();
+	}
+	function myFunction(xml) {
+		var i;
+		var xmlDoc = xml.responseXML;
+		var table="<tr><th>TYPE</th><th>MAX</th><th>DE</th><th>CO</th></tr>";
+		var x = xmlDoc.getElementsByTagName("OPTION");
+		for (i = 0; i <x.length; i++) { 
+			table += "<tr><td>" +
+			x[i].getElementsByTagName("TYPE")[0].childNodes[0].nodeValue +
+			"</td><td>" +
+			x[i].getElementsByTagName("MAX")[0].childNodes[0].nodeValue +
+			"</td><td>" +
+			x[i].getElementsByTagName("DE")[0].childNodes[0].nodeValue +
+			"</td><td>" +
+			x[i].getElementsByTagName("CO")[0].childNodes[0].nodeValue +
+			"</td></tr>";
+		}
+		document.getElementById("demo").innerHTML = table;
+	}
+</script>
 </head>
 <body>
 	<div class=vido>
-	<video playsinline autoplay muted loop id="bgvid">
+	<video playsinline autoplay muted loop poster="polina.jpg" id="bgvid">
     <source src="https://rawgit.com/haitte/mystudentbank/master/public/videos/618513234.mp4" type="video/mp4">
 	</video>
 		</div>
@@ -112,65 +151,34 @@
 <div id ="clear">
 </div>
 	
-	
-		<!-- Ajax -->
-		<div id="fh5co-services-section" class="mm">
-			<div style="margin-top:50px;margin-bottom:50px">
-		     <h3 style="text-align:center" class="section-title">About Us</h3>
-				<center><p>We are the largest student online bank in Ireland. Have millions of loyal users. Best choice for internation students. Flexible and easy to use. </p></center>
-		</div>
-			<div id="targetDiv" class="container">
-				<div class="row" style="margin-bottom:50px;">
-					<div class="col-md-4">
-						<div class="services-inner text-center">
-							<img src="images/account.png" alt="account" style="width:100px;height:100px;">
-							<h3 id="targetDiv">CURRENT ACCOUNT</h3>
-							<p id="targetDiv">The student current account comes with great benefits and now you can open your account online in minutes. Welcome the intenational and domestic student.</p>
-							<form><input type="button" class="button button2" value="More Details" onclick = "getData('s1.txt', 'targetDiv')"></form>
-						</div>
-					</div>
-					<div class="col-md-4 text-center">
-						<div class="services-inner">
-							<img src="images/loan.png" alt="account" style="width:100px;height:100px;">
-							<h3 id="targetDiv">LOANS</h3>
-							<p id="targetDiv">Get the guaranteed lowest rate on the market for loans over &euro;10,000 at 6.30%APR with a student current account.</p>
-							<form><input type="button" class="button button2" value="More Details" onclick = "getData('s2.txt', 'targetDiv')"></form>
-						</div>
-					</div>
-					<div class="col-md-4 text-center">
-						<div class="services-inner">
-							<img src="images/mortgage.png" alt="account" style="width:100px;height:100px;">
-							<h3 id="targetDiv">MORTGAGES</h3>
-							<p id="targetDiv">We have one of the Lowest Mortgage Rates on the market.Find out how much you could borrow, what your repayments will be.</p>
-							<form><input type="button" class="button button2" value="More Details" onclick = "getData('s3.txt', 'targetDiv')"></form>
-						</div>
-					</div>
-					<div class="col-md-4 text-center" style="margin-top:50px;">
-						<div class="services-inner">
-							<img src="images/card.png" alt="account" style="width:100px;height:100px;">
-							<h3 id="targetDiv">CREDIT CARD</h3>
-							<p id="targetDiv">You do the shopping, we will do the rewards! With a student credit card you get 1% cash reward on grocery and online purchases.</p>
-							<form><input type="button" class="button button2" value="More Details" onclick = "getData('s4.txt', 'targetDiv')"></form>
-						</div>
-					</div>
-					<div class="col-md-4 text-center" style="margin-top:50px;">
-						<div class="services-inner">
-							<img src="images/insurance.png" alt="account" style="width:100px;height:100px;">
-							<h3 id="targetDiv">INSURENCE</h3>
-							<p id="targetDiv">We have got you covered with our easy-to-understand life insurance products. Focus on your health and protect you during travel.</p>
-							<a href="/insurance"><input type="button" value="More Details" class="button button2" /></form>
-						</div>
-					</div>
-					<div class="col-md-4 text-center" style="margin-top:50px;">
-						<div class="services-inner">
-							<img src="images/saving.png" alt="account" style="width:100px;height:100px;">
-							<h3 id="targetDiv">SAVINGS</h3>
-							<p id="targetDiv">Saving for special occasion, a holiday of a lifetime,or just for a rainy day? Whatever you are dreaming of, we can get you there.</p>
-							<form><input type="button" class="button button2" value="More Details" onclick = "getData('s6.txt', 'targetDiv')"></form>
-						</div>
-					</div>
-					</div>
-				</div>
+	<div id="targetDiv" class="container" style="margin-top:300px;">
+<h1><b>Insurance</b></h1>
+<h2><b>Features & Benefits</b></h2>
+<h3>Student Health Insurance</h3>
+<p>The Student Secure plan provides international student health insurance to both international and study abroad students who are studying outside of their home country either in the USA or around the world. This comprehensive student health insurance plan offers coverage on a monthly basis that will meet and exceed nearly all school and government requirements, and for those students on the J1 and F1 visa (even those on OPT) you are automatically eligible for coverage.
+</p>
+<b>Plan Level Options</b>
+<p>The Student Secure comes in four plan levels; Smart, Budget, Select and Elite - providing you with the plan choices you need from the basic level, right up to the most comprehensive Elite plan. It also includes coverage for mental health, maternity, pre-existing conditions - benefits required by most schools.</p>
+
+  
+  <button type="button" onclick="loadDoc()">Plan Level Options</button>
+<br><br>
+  
+<table id="demo"></table>
+  <br>
+   <h3>Travel Medical Insurance</h3>
+<p>The Atlas Travel plan provides international travel medical insurance coverage for those who are traveling, studying or living abroad around the world, outside of your home country. It offers core travel insurance benefits, with coverage from as little as 5 days. </p>
+<p>The benefits offered on the Atlas Travel plan provide a range of high quality travel insurance benefits that are designed to cover you in the event of an unexpected accident or injury when you are abroad. This includes coverage for medical expenses, evacuation, repatriation, emergency reunion and other related benefits.</p>
+
+<h3>Major Medical Insurance</h3>
+<p>The Global Medical International Major Medical Insurance plan is available to both US and non-US citizens who are planning to live, study or work outside of their home country for at least one year or more. The annual major medical insurance plan is designed to provide comprehensive international health insurance coverage for when you are abroad for a length of time.</p>
+<p>As needs and requirements vary so greatly, the Global Medical insurance plan is designed to offer a range of benefits and coverage limits to suit all needs. Starting off with the Bronze plan, offering base coverage, then moving to the Silver, Gold and Gold Plus, and finally to the Platinum plan for those looking for the best coverage possible.</p>
+
+<div class="container" style="margin-bottom: 30px;">
+  <button type="button" class="btn w3-white w3-border w3-border-orange w3-round-xlarge btn-md"><a href="products.html">Get back</a></button>    
+</div>
+</div>
+
 		
 		
 		
@@ -185,18 +193,18 @@
 								<center><li><img src="images/address.png" alt="account" style="width:30px;height:30px;"> South-East Inner City, Dublin, Ireland</li>
 								<li><img src="images/phone.png" alt="account" style="width:30px;height:30px;margin-right:10px;">+ 1235 2355 98</li>
 								<li><img src="images/email.png" alt="account" style="width:30px;height:30px;margin-right:10px;"><a href="https://www.google.com/gmail/">info@studentonlinebank.com</a></li>
-									<li><img src="images/web.png" alt="account" style="width:30px;height:30px;margin-right:10px;"><a href="index.ejs">www.studentonlinebank.com</a></li></center>
+									<li><img src="images/web.png" alt="account" style="width:30px;height:30px;margin-right:10px;"><a href="index.html">www.studentonlinebank.com</a></li></center>
 							</ul>
 						</div>
 						<div class="col-md-3">
 							<h3 class="section-title" style="text-align:center">Our Products</h3>
 							<ul class="product-info">
-								<center><li><>Student Current Account</a></li>
-								<li>Credit Card</a></li>
-								<li>Mortgages</a></li>
-								<li>Personal Loan</a></li>
-								<li>Business Loan</a></li>
-									<li>Personal Planning</a></li></center>
+								<center><li><a href="products.html">Student Current Account</a></li>
+								<li><a href="products.html">Credit Card</a></li>
+								<li><a href="products.html">Mortgages</a></li>
+								<li><a href="products.html">Personal Loan</a></li>
+								<li><a href="products.html">Business Loan</a></li>
+									<li><a href="products.html">Personal Planning</a></li></center>
 							</ul>
 						</div>
 						<div class="col-md-6 col-md-offset-3 text-center">
@@ -206,7 +214,7 @@
 								<a href="https://www.instagram.com/?hl=en"><img src="images/instagram.png" alt="account" style="width:40px;height:40px;margin-right:30px;"></a>
 								<a href="https://www.youtube.com/"><img src="images/youtube.png" alt="account" style="width:40px;height:40px;margin-right:30px;"></a>
 							</p>
-							<p>&copy; 2016 <a href="index.ejs">Student Bank</a> </p>
+							<p>&copy; 2016 <a href="index.html">Student Bank</a> </p>
 						</div>
 					</div>
 				</div>
@@ -214,5 +222,10 @@
 		</footer>
 	</div>
 
+
+	<script src="js/jquery.min.js"></script>
+
+	<!-- Main JS (Do not remove) -->
+	<script src="js/main.js"></script>
 </body>
 </html>

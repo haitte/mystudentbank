@@ -1,0 +1,26 @@
+<CATALOG>
+<OPTION>
+  <TYPE>Smart</TYPE>
+  <MAX>€200,000 Maximum</MAX>
+  <DE>€50 Deductible</DE>
+  <CO>80% Coverage</CO>
+</OPTION>
+<OPTION>
+  <TYPE>Budget</TYPE>
+  <MAX>€250,000 Maximum</MAX>
+  <DE>€45 Deductible</DE>
+  <CO>80% up to €25,000</CO>
+</OPTION>
+<OPTION>
+  <TYPE>Select</TYPE>
+  <MAX>€300,000 Maximum</MAX>
+  <DE>€25 Deductible</DE>
+  <CO>80% up to €5,000</CO>
+</OPTION>
+<OPTION>
+  <TYPE>Elite</TYPE>
+  <MAX>€500,000 Maximum</MAX>
+  <DE>€25 Deductible</DE>
+  <CO>100% in network</CO>
+</OPTION>
+</CATALOG>

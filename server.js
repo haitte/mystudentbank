@@ -19,7 +19,8 @@ app.use(session({
 	duration: 30*60*1000,
 	activeDuration: 5*60*1000
  } )); 
-
+app.use(express.static('public'));
+// app.use('/static', express.static('public'))
 var MyAppModel = mysqlModel.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -89,7 +90,15 @@ function requireLogin(req,res,next){
 app.get('/',function(req,res){
   res.render('index.ejs');
 });
-
+app.get('/index.ejs',function(req,res){
+  res.render('index.ejs');
+});
+app.get('/products.ejs',function(req,res){
+  res.render('products.ejs');
+});
+app.get('/insurance',function(req,res){
+  res.render('insurance.ejs');
+});
 app.get('/login',function(req,res){
 	message = '';
   res.render('login.ejs',{message:message});

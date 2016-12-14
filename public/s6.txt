@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>bank</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+<h1><b>Savings</b></h1>
+<h2><b>Features & Benefits</b></h2>
+<p><b>
+1. If you are a Student Saver between the ages of 12 – 17 inclusive, you can open a Student Saver Account.
+<br>
+2. If you are under 16 years old, we will need to make sure that your Parent/Guardian is happy for you to start saving with us. 
+<br>
+3. This account is only available as a sole account in your name.<br>
+4. You can only open one Student Saver Account.
+<br>
+5. You can save an amount that suits you monthly or just top up your balance as you choose.
+<br>
+6. To reward your savings, we will give you a great interest rate on balances up to €1,000. All amounts above €1,000 will earn a lesser rate of interest.<br>
+7.When you reach the age of 19, your account will automatically change to a suitable demand deposit account. We will give two months notice before this change is made<br>
+</b>
+</p>
+
+
+
+<div class="container" style="margin-bottom:30px;">
+  <button type="button" class="btn w3-white w3-border w3-border-orange w3-round-xlarge btn-md"><a href="index.ejs">Get back</a></button>    
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>bank</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+<h1><b>Mortgage</b></h1>
+<h2><b>Features & Benefits</b></h2>
+<h3>Do you need to save regularly to build up a deposit for a Mortgage?</h3>
+<p><b>
+1. Open an account online in minutes; there is no need to go to a branch, just upload your identification and address verification documents during account opening.
+<br>
+2. Pay your direct debit from any Republic of Ireland current account (You do not need a Bank of Ireland current account to open this account)
+<br>
+3. Available to Republic of Ireland (ROI) residents only, aged 18 or over<br>
+4. One account per customer in sole or joint names<br>
+5.Option to add lump sum lodgements of up to a total value of €20,000, in any branch.
+<br>
+6. Save monthly by Direct Debit – Minimum €200, Maximum €2,500 per month
+<br>
+</b>
+</p>
+<div class="container" style="margin-bottom: 30px;>
+  <button type="button" class="btn w3-white w3-border w3-border-orange w3-round-xlarge btn-md"><a href="index.ejs">Get back</a></button>    
+</div>
+</div>
+</body>
+</html>

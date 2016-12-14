@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>bank</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="first">
+<h1><b>2nd Level Current Account</b></h1>
+<h2><b>Features & Benefits</b></h2>
+<h3>What you get with a 2nd Level Current Account</h3>
+<p><b>
+1. An ATM card will allow you get cash at over 2,000 cash machines around Ireland. Most of our ATM’s will allow you to top up your mobile phone, check your balance and order statements to see how much money you have in your account. We’ll also pay the annual Government Stamp Duty on your ATM card (€2.50 per year) or your Debit card (up to €5 per year).
+<br>
+2. If you are aged 16 years old or over you are eligible to apply for a Visa Debit card. If you are under 18, we will need your parent or guardian to give us consent and indemnity before we process your application. With a Visa Debit card, you can shop and pay for your purchases directly from your 2nd level student current account, and it also saves you carrying cash around, so it’s perfect for school trips abroad. It’s quick, easy and a better way to pay.
+<br>
+You can use your Visa Debit card at home and abroad to withdraw cash from ATMs and pay for goods and services. However there may be charges for using your Visa Debit card abroad, so please check our Schedule of Fees & Charges brochure.
+<br>
+3. No call credit? No problem. Register at any of our ATM that displays the Meteor, O2 or Vodafone logos. You can then top up your call credit by sending a free text. The money is taken directly out of your account. You can also top up using the free text number at anytime, anywhere in the world where your mobile operator has roaming. 
+<br>
+4. Online banking, Mobile banking and Telephone banking – bank whenever you want, wherever you want.
+<br>
+5. Access to Ireland’s largest ATM and Branch network
+<br>
+6. You will not be charged fees on the following day to day banking transactions for the duration of your studies:
+<br>
+(1) Lodgements<br>
+(2) Debit card transactions and cash back<br>
+(3) Debit/credit transactions using 365 online or phone or mobile banking<br>
+(4) Withdrawals at Bank of Ireland ATM’s or in branches
+</b>
+</p>
+<div class="container">
+  <button type="button" class="btn w3-white w3-border w3-border-orange w3-round-xlarge btn-md"><a href="index.ejs">Get back</a></button>    
+</div>
+</div>
+
+<div class="second">
+<h1><b>3rd Level Current Account</b></h1>
+<h2><b>Features & Benefits</b></h2>
+<h3>With a 3rd level Current Account you can get:</h3>
+<p><b>
+1. With a 3rd level student current account, you will not be charged fees on the following day to day banking transactions for the duration of your studies:
+<br>
+(1) Lodgements<br>
+(2) Direct debits and standing orders<br>
+(3) Debit card transactions and cash back (for Debit Card, ATM and Point of Sale transactions and cashback there may be fees and charges for using your card (Visa Debit) abroad.<br>
+(4) Debit/credit transactions using 365 online or phone or mobile banking<br>
+(5) Withdrawals at our ATM’s or in branches<br>
+2. Visa Debit Card with free contactless payments - make purchases in seconds at home and abroad by simply tapping your card on the reader<br>
+3. Want to buy something, but don’t have the cash? Talk to us today about a student loan for your first car, car insurance or that laptop you really want.<br>
+4. Online banking, Mobile banking and Telephone banking – bank whenever you want, wherever you want.
+<br>
+5. Access to Ireland’s largest ATM and Branch network
+<br>
+</b>
+</p>
+<div class="container" style="margin-bottom: 30px;>
+  <button type="button" class="btn w3-white w3-border w3-border-orange w3-round-xlarge btn-md" ><a href="index.ejs">Get back</a></button>    
+</div>
+</div>
+</body>
+</html>

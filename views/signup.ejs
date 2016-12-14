@@ -4,10 +4,35 @@
 <head>
 	<title>Welcome to our Bank</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- load fontawesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+	<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.27/jquery.autocomplete.js"></script>
+	<!-- load fontawesome -->
 	<style>
 		body 		{ padding-top:80px; background: url('https://rawgit.com/haitte/mystudentbank/master/public/images/wov.png'); }
 	</style>
+	<script>
+		$( document ).ready(function() {
+    console.log( "ready!" );
+			var countries = [
+		 { value: 'Andorra', data: 'AD' },
+		 { value: 'Zimbabwe', data: 'ZZ' }
+		];
+
+		$('#autocomplete').autocomplete({
+				lookup: countries,
+				onSelect: function (suggestion) {
+						alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+				}
+		});
+});
+		
+	</script>
+	
 </head>
 <body>
 <div class="container">
@@ -34,7 +59,7 @@
 		</div>
 		<div class="form-group-sm">
 			<label>City</label>
-			<input type="text" class="form-control input-sm" name="city" required>
+			<input type="text" class="form-control input-sm" name="city" id="autocomplete" required>
 		</div>
 		<div class="form-group-sm">
 			<label>Phone Number</label>

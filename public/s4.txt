@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>bank</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+<h1><b>Student Credit Card</b></h1>
+<h2><b>Features & Benefits</b></h2>
+<p>When you’re travelling it’s always a good idea to have access to extra funds for flights, accommodation, extra spending money or emergencies. That’s where a student credit card can come in handy, and with our fantastic introductory offer you’ll pay 0% interest on purchases for the first 6 months.
+To apply for a student credit card, you must:<br>
+1.Be over 18<br>
+2.Provide proof you are attending a full time course<br>
+3.Have a current account with any bank for at least 6 months (with an average monthly turnover of €127)</p>
+<h3><b>With the Student Credit Card you get</b></h3>
+<p><b>
+1. No transaction fees: Pay no transaction fees when you use your credit card to pay for goods and services. Cross border handling fees apply to non-Euro transactions.
+<br>
+2. Up to €1,000 credit limit: Gives you an immediate credit limit of €500 in your first or second year of full time study and up to €1,000 if you’re in third year or above of full time study.
+<br>
+3. No annual account fee: No hidden fees or charges.<br>
+4. 0% interest on purchases: For the first 6 months
+<br>
+5.24 hour approval: Get a credit card approved within 24 hours and receive your credit card within 1 week
+<br>
+6. Free travel insurance: Free worldwide multi-trip travel insurance feature.
+<br>
+7.Paying with Contactless: Contactless is a fast, easy and secure way to pay for items. It’s ideal for quick stops at coffee shops, grocery stores and pharmacies at home and abroad. There is no need to put your card into the terminal or enter your PIN, all you have to do is simply hold your credit card against the card reader. When you use contactless, a unique code is generated for your payment –so your actual card details are never shared with the retailer.
+<br>
+8.Emergency Cash Service: Should you lose your card while abroad, we’ll cancel your card. If you are abroad we can provide you with an Emergency Cash Advance Facility in most countries. (Subject to available credit, fees and charges may apply.)
+</b>
+</p>
+<div class="container" style="margin-bottom: 30px;>
+  <button type="button" class="btn w3-white w3-border w3-border-orange w3-round-xlarge btn-md"><a href="index.ejs">Get back</a></button>    
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+#footer {
+  width: 100%;
+  float: left;
+  background: #222831;
+}
+#footer p {
+  color: rgba(255, 255, 255, 0.3);
+}
+#footer .section-title {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-align:center;
+  margin-bottom:5px;
+}
+#footer .float {
+  float: left;
+  margin-right: 10%;
+}
+#footer ul {
+  padding: 0;
+  margin: 0;
+}
+#footer ul li {
+  padding: 0;
+  margin: 0 0 10px 0;
+  list-style: none;
+  color: rgba(255, 255, 255, 0.3);
+}
+#footer ul li a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none !important;
+}
+#footer ul li a:hover {
+  color: #fff;
+}
+#footer .contact-info {
+  margin: 0 0 60px 0;
+}
+#footer .col-md-3 {
+  width:100%;
+  height:80px;
+}
+#footer .contact-info li {
+  position: relative;
+  padding-left: 30px;
+  display:inline;
+  margin-right:40px;
+}
+#footer .product-info li {
+  position: relative;
+  padding-left: 20px;
+  display:inline;
+  margin-right:30px;
+}
+#footer .contact-info li i {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.7);
+}
+#footer .contact-info li a {
+  color: rgba(255, 255, 255, 0.5);
+}
+#footer .contact-form .form-group input[type="name"],
+#footer .contact-form .form-group input[type="text"],
+#footer .contact-form .form-group input[type="email"],
+#footer .contact-form .form-group textarea {
+  font-size: 16px;
+}
+#footer .contact-form .form-group input[type="name"]::-webkit-input-placeholder,
+#footer .contact-form .form-group input[type="text"]::-webkit-input-placeholder,
+#footer .contact-form .form-group input[type="email"]::-webkit-input-placeholder,
+#footer .contact-form .form-group textarea::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+#footer .contact-form .form-group input[type="name"]:-moz-placeholder,
+#footer .contact-form .form-group input[type="text"]:-moz-placeholder,
+#footer .contact-form .form-group input[type="email"]:-moz-placeholder,
+#footer .contact-form .form-group textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: rgba(255, 255, 255, 0.5);
+}
+#footer .contact-form .form-group input[type="name"]::-moz-placeholder,
+#footer .contact-form .form-group input[type="text"]::-moz-placeholder,
+#footer .contact-form .form-group input[type="email"]::-moz-placeholder,
+#footer .contact-form .form-group textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.5);
+}
+#footer .contact-form .form-group input[type="name"]:-ms-input-placeholder,
+#footer .contact-form .form-group input[type="text"]:-ms-input-placeholder,
+#footer .contact-form .form-group input[type="email"]:-ms-input-placeholder,
+#footer .contact-form .form-group textarea:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+#footer .contact-form .form-group input {
+  color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: none;
+}
+#footer .contact-form .form-group textarea {
+  color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: none;
+}
+#footer #btn-submit {
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: #FA7E0A !important;
+}
+#footer .copy-right {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 5em;
+  margin-top: 5em;
+}
+#footer .copy-right p {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 16px;
+}
+#footer .copy-right p a {
+  color: rgba(255, 255, 255, 0.5);
+}
